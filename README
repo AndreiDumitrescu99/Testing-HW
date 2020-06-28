@@ -1,0 +1,38 @@
+# Testing-HW
+
+Plan testare:
+Initial verific functionalitatea normala a celor 4 functii obisnuite: get, delete, post, put. Pentru a verifica functionalitatea acestora
+am utilizat 4 seturi de teste pentru fiecare (test_get.js, test_delete.js, test_post.js, test_put.js). Ordinea in care aceste teste ar trebui rulate este:
+test_get, test_delete, test_post, test_put.
+
+Pentru a verifica comportamentul normal al functiei "get":
+  -fac un get pe events si un get events/id
+  -verific daca se returneaza un status cod egal cu 200
+  -verific daca get /events returneaza initial 12 event-uri
+  -verific daca get /events/:id returneaza id-ul corect.
+
+Pentru a verifica comportamentul normal al functiei "delete":
+  -dau delete la event-ul cu id-ul: 2
+  -verific daca se returneaza un status cod egal cu 200
+  -verific daca event-ul chiar a fost sters, folosind un get pe event si verificand ca body-ul sau prezinta o eroare
+                                                                   
+Pentru a verifica comportamentul normal al functiei "post": 
+  -creez folosind post un eveniment nou cu id-ul 13 
+  -verific daca se returneaza un status cod egal cu 201
+  -verific daca chiar s-a creat event-ul verificand cu ajutorul unui get id-ul sau
+  -dupa ce am verificat dau delete la event
+  
+Pentru a verifica comportamentul normal al functiei "put":
+  -initial creez un eveniment nou folosind post cu topicul: 'funko' si cu id-ul: '13'
+  -folosesc put pentru a modifica valoarea topicului la: 'NOTfunko'
+  -verific daca se returneaza un status cod egal cu 200
+  -verific daca se updateaza event-ul folosind un get si verificand valoarea campului topics
+  -dupa aceste verificari dau delete la noul event.
+  
+In plus, am si un fisier de teste "complex_tests" unde testez anumite cazuri particulare si niste cazuri mai complexe. Aceste cazuri sunt:
+  -cazul in care se da get pe un event cu id invalid
+  -cazul in care se da post pe un event cu id invalid (aici consider ca ar trebui sa se returneze status code: 404 deoarece event-ul nu exista)
+  -cazul in care creez un event si il sterg (verific daca acesta chiar se creeaza si apoi daca chiar este sters)
+  -cazul in care creez un event, il modific si il sterg (verific daca acesta chiar se creeaza si este modificat si apoi daca chiar este sters)
+
+                                                                   
